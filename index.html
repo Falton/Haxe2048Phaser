@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Phaser Test Game</title>
+        <script src="assets/javascript/phaser.min.js"></script>
+    </head>
+    <body>
+   <script src="assets/javascript/Model/Grid.js"></script>
+    <script src="assets/javascript/Model/Tile.js"></script>
+    <script src="assets/javascript/Managers/ScreenManager.js"></script>
+    <script src="assets/javascript/Screens/SplashScreen.js"></script>
+    <script src="assets/javascript/Screens/GameScreen.js"></script>
+    <script src="assets/javascript/Screens/GameOverPopup.js"></script>
+    <script type="text/javascript">
+
+    
+    var screenManager;
+    var music;
+    window.onload = function() {
+
+        var game = new Phaser.Game(1024, 640, Phaser.AUTO, '', { preload: preload, create: create });
+
+        function preload () {
+
+            game.load.image('backgroundgreen', 'assets/images/backgroundgreen.png');
+            game.load.image('TitleScreen_green', 'assets/images/TitleScreen_green.png');
+            game.load.image('PlayButton', 'assets/images/PlayButton.png');
+            game.load.image('OKButton', 'assets/images/OK.png');
+            game.load.image('RotateLeft', 'assets/images/RotateLeft.png');
+            game.load.image('tiles_edge01', 'assets/images/tiles_edge01.png');
+            game.load.image('tiles_edge02', 'assets/images/tiles_edge02.png');
+            game.load.image('tiles_edge03', 'assets/images/tiles_edge03.png');
+            game.load.image('tiles_edge04', 'assets/images/tiles_edge04.png');
+            game.load.image('tiles_unselected01', 'assets/images/tiles_unselected_01.png');
+            game.load.image('tiles_unselected02', 'assets/images/tiles_unselected_02.png');
+            game.load.image('tiles_unselected03', 'assets/images/tiles_unselected_03.png');
+            game.load.image('tiles_unselected04', 'assets/images/tiles_unselected_04.png');
+            game.load.image('tiles_unselected05', 'assets/images/tiles_unselected_05.png');
+            game.load.image('GameOverWindow', 'assets/images/GameOverWindow.png');
+            game.load.image('ReplayButtonNormal', 'assets/images/ReplayButtonNormal.png');
+            game.load.image('empty', 'assets/images/empty.png');
+            game.load.image('pixel', 'assets/images/pixel.png');
+            
+            game.load.audio('bgMusic','assets/sounds/BoxCat Games - Nameless- the Hackers RPG Soundtrack - 11 Assignment.mp3' );
+            game.load.audio('turnSound','assets/sounds/PulseSho-Mark_E_B-8071_hifi.mp3' );
+            
+
+        }
+
+        function create () {
+            var bg = game.add.sprite(0, 0, 'backgroundgreen');
+            
+            music = game.add.audio('bgMusic');
+            music.play();
+            
+            screenManager = new ScreenManager( game );
+            game.add.group(screenManager);
+            
+        }
+
+    };
+
+    </script>
+    
+    </body>
+</html>
